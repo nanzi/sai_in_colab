@@ -20,17 +20,17 @@ if subprocess.run(["nvidia-smi", "-L"]).returncode != 0:
   assert False, "No GPU available!"
 
 !apt-get update
-!apt-get install -y --fix-missing --no-install-recommends cuda-compiler-9-2 cuda-cublas-dev-9-2 cuda-cudart-dev-9-2
+!apt-get install -y --fix-missing --no-install-recommends cuda-compiler-10-1 libcublas10 libcublas-dev cuda-cudart-dev-10-1
 
-!wget http://developer.download.nvidia.com/compute/redist/cudnn/v7.3.1/cudnn-9.2-linux-x64-v7.3.1.20.tgz
-!cd /usr/local && tar -xzvf /content/cudnn-9.2-linux-x64-v7.3.1.20.tgz
+!wget http://developer.download.nvidia.com/compute/redist/cudnn/v7.6.5/cudnn-10.1-linux-x64-v7.6.5.32.tgz
+!cd /usr/local && tar -xzvf /content/cudnn-10.1-linux-x64-v7.6.5.32.tgz
 !chmod a+r /usr/local/cuda/lib64/libcudnn*
 
-!git clone https://github.com/startnoob/sai_in_gg.git
+!git clone https://github.com/nanzi/sai_in_colab.git
 
 """Congratulations! We can contribute to SAI project by running code blocks below.Please replace $\$username$ and $\$passwd$ into yours，-m help you to limit selfplays number.
 
 恭喜你！然后我们运行下面代码跑谱：请替换 $\$username$ 和 $\$passwd$为你的，修改 -m 参数可以设定跑谱数量上限。
 """
 
-!cd sai_in_gg && ./autogtp --url http://sai.unich.it/ --username $username --password $passwd -m100| grep minute
+!cd sai_in_colab && ./autogtp --url http://sai.unich.it/ --username $username --password $passwd -m100| grep minute
