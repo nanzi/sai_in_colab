@@ -19,14 +19,10 @@ import subprocess
 if subprocess.run(["nvidia-smi", "-L"]).returncode != 0:
   assert False, "No GPU available!"
 
-!apt-get update
-!apt-get install -y --fix-missing --no-install-recommends cuda-compiler-10-1 libcublas10 libcublas-dev cuda-cudart-dev-10-1
-
-!wget http://developer.download.nvidia.com/compute/redist/cudnn/v7.6.5/cudnn-10.1-linux-x64-v7.6.5.32.tgz
-!cd /usr/local && tar -xzvf /content/cudnn-10.1-linux-x64-v7.6.5.32.tgz
-!chmod a+r /usr/local/cuda/lib64/libcudnn*
-
+!rm -rf sai_in_colab
 !git clone https://github.com/nanzi/sai_in_colab.git
+!cd sai_in_colab && chmod +x sai autogtp
+!cd sai_in_colab && git shortlog
 
 """Congratulations! We can contribute to SAI project by running code blocks below.Please replace $\$username$ and $\$passwd$ into yours，-m help you to limit selfplays number.
 
